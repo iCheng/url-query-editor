@@ -1,12 +1,14 @@
 <template>
     <div class="btns-container">
-        <div class="sort-btn btn-item">排序</div>
-        <div class="search-btn btn-item">搜索</div>
-        <div class="add-btn btn-item">添加</div>
+        <AddBtn></AddBtn>
+        <SearchBtn></SearchBtn>
     </div>
 </template>
 
 <script setup lang="ts"> 
+import AddBtn from './AddBtn.vue'
+import SearchBtn from './SearchBtn.vue'
+
 </script>
 
 <style scoped lang="scss">
@@ -14,16 +16,9 @@
     display: flex;
     height: 30px;
     gap: 20px;
-    .btn-item {
-        height: 20px;
-        width: 30px;
-        height: 20px;
-        width: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: gray;
-        border-radius: 5px;
-    }
+    // padding: 0px 20px 10px 20px;
+    margin: 0px 20px 10px 20px;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
