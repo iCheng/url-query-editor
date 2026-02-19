@@ -17,7 +17,9 @@ const placeholder = ref('Search Key')
 
 const onClick = () => {
     if (iputKey.value === '') return;
-    const targetDom = document.querySelector(`[id^="${iputKey.value}"]`)
+    const paramsListDom = document.querySelector('#params-list')
+    if (!paramsListDom) return;
+    const targetDom = paramsListDom.querySelector(`[id^="${iputKey.value}"]`)
     if (targetDom) {
         iputKey.value = ''
         targetDom.scrollIntoView({

@@ -6,7 +6,7 @@
             <div v-if="params.length === 0" class="empty-state">
                 暂无查询参数
             </div>
-            <div v-else class="params-list">
+            <div id="params-list" v-else class="params-list">
                 <div v-for="(param, index) in params" :key="index" class="param-item">
                     <span v-if="param.key" :id="`${param.key}-${index}`" class="param-key">{{ param.key }}</span>
                     <input v-if="param.key" class="param-value" v-model="param.value" @keyup.enter="applyChanges" placeholder="参数值">
