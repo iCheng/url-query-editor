@@ -1,36 +1,39 @@
 {
-    "manifest_version": 3,
-    "name": "URL Query Editor",
-    "version": "1.0.0",
-    "description": "URL Query Editor 插件",
-    "icons": {
-      "16": "lulu.png",
-      "32": "lulu.png",
-      "48": "lulu.png",
-      "128": "lulu.png"
-    },
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "lulu.png",
-        "32": "lulu.png",
-        "48": "lulu.png",
-        "128": "lulu.png"
-      }
-    },
-  
-    "background": {
-      "service_worker": "background.js",
-      "type": "module"
-    },
-  
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
-    ],
-  
-    "permissions": ["storage", "tabs"]
-  }
-  
+  "manifest_version": 3,
+  "name": "URL Query Editor",
+  "version": "1.0.0",
+  "description": "URL Query Editor 插件",
+  "icons": {
+    "16": "url-query-editor-logo.png",
+    "32": "url-query-editor-logo.png",
+    "48": "url-query-editor-logo.png",
+    "128": "url-query-editor-logo.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "url-query-editor-logo.png",
+      "32": "url-query-editor-logo.png",
+      "48": "url-query-editor-logo.png",
+      "128": "url-query-editor-logo.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "tabs"
+  ]
+}
