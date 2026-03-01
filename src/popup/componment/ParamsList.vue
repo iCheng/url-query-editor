@@ -36,9 +36,21 @@ function parseUrlParams(url: string): QueryParam[] {
         const urlObj = new URL(url)
         const paramsArray: QueryParam[] = []
 
+        // 解析常规查询参数 (?key=value)
         urlObj.searchParams.forEach((value, key) => {
             paramsArray.push({ key, value })
         })
+
+        // 解析 hash 中的查询参数 (#/path?key=value)
+        // if (urlObj.hash.includes('?')) {
+        //     const hashPart = urlObj.hash.split('?')[1]
+        //     if (hashPart) {
+        //         const hashParams = new URLSearchParams(hashPart)
+        //         hashParams.forEach((value, key) => {
+        //             paramsArray.push({ key, value })
+        //         })
+        //     }
+        // }
 
         return paramsArray
     } catch (e) {
