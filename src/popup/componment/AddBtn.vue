@@ -1,6 +1,7 @@
 <template>
     <div class="btn-item add">
         <el-popover
+            ref="popoverRef"
             placement="bottom-start"
             popper-class="add-params-popover"
             trigger="click"
@@ -8,9 +9,9 @@
         >
             <div class="add-params-box">
                 <div class="title">key: </div>
-                <el-input size="small" class="input" v-model="iputKey" placeholder="Input Key" />
+                <el-input size="small" class="input" v-model="iputKey" placeholder="Input Key" @keyup.enter="onClick"/>
                 <div class="title">value: </div>
-                <el-input size="small" v-model="inputValue" placeholder="Input Value" />
+                <el-input size="small" v-model="inputValue" placeholder="Input Value" @keyup.enter="onClick"/>
                 <el-button class="confirm-btn" size="small" @click="onClick">Confirm</el-button>
             </div>
             <template #reference>
@@ -22,7 +23,12 @@
 
 <script setup lang="ts"> 
 import { ref } from 'vue'
+import type { ElPopover } from 'element-plus'
+import { useParamsRefresh } from '../composables/useParamsRefresh'
 
+const { triggerRefresh } = useParamsRefresh()
+
+const popoverRef = ref<InstanceType<typeof ElPopover> | null>(null)
 const customStyle = {
     width: "200px"
 }
@@ -66,7 +72,10 @@ const onClick = () => {
             if (chrome.runtime.lastError) {
                 alert('应用更改失败')
             } else {
-                // 更新当前 URL
+                popoverRef.value?.hide()
+                iputKey.value = ''
+                inputValue.value = ''
+                setTimeout(() => triggerRefresh(), 4000) // 4秒后触发参数列表刷新
             }
         })
     })
