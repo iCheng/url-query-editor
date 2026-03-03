@@ -85,36 +85,69 @@ const onClick = () => {
 
 <style scoped lang="scss">
 .btn-item {
-    width: 50px;
-    height: 30px;
+    flex-shrink: 0;
+    height: 28px;
+    display: flex;
+    align-items: center;
+
+    :deep(.el-button) {
+        border-radius: 7px;
+        height: 28px;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 0 14px;
+        letter-spacing: 0.03em;
+    }
 }
 .confirm-btn {
-    margin-top: 10px;
-    height: 30px;
+    margin-top: 14px;
+    height: 32px;
     width: 100%;
-    background-color: Orange;
+    background: linear-gradient(135deg, #ff8c00, #ffaa40);
     color: white;
     border: none;
-    opacity: 0.9;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+
     &:hover {
-        opacity: 0.7;
+        background: linear-gradient(135deg, #e67e00, #ff8c00);
+        box-shadow: 0 3px 10px rgba(255, 140, 0, 0.3);
+    }
+
+    &:active {
+        transform: scale(0.98);
     }
 }
 </style>
 
 <style lang="scss">
     .add-params-popover {
-        width: 500px;
+        border-radius: 12px !important;
+        padding: 16px !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+        border: 1px solid #f0f1f5 !important;
+
         .add-params-box {
             width: 100%;
+
             .title {
-                margin: 5px 0px;
+                font-size: 11px;
+                font-weight: 600;
+                color: #9ca3af;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                margin: 12px 0 6px;
+
+                &:first-child {
+                    margin-top: 0;
+                }
             }
+
             .input {
                 width: 100%;
-            }
-            .input:first-child {
-                margin-bottom: 20px;
             }
         }
     }

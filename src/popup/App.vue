@@ -13,11 +13,11 @@ import ParamsList from './componment/ParamsList.vue'
 
 <style scoped lang="scss">
 .popup-container {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding: 16px 0 20px;
     width: 400px;
     max-height: 500px;
     min-height: 200px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(180deg, #fffdf9 0%, #ffffff 60%);
 }
 </style>

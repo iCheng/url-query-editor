@@ -1,5 +1,5 @@
 <template>
-    <div class="btns-container">
+    <div class="search-btn-box">
         <el-input class="search-input" v-model="iputKey" :placeholder="placeholder" @keyup.enter="onClick">
             <template #append>
                 <img class="search-icon" :src="Sousuo" alt="search" @click="onClick"/>
@@ -41,33 +41,63 @@ const onClick = () => {
 
 <style scoped lang="scss">
 .btns-container {
-    display: flex;
-    height: 30px;
-    gap: 20px;
+    flex: 1;
 
     .search-input {
-        height: 24px;
-        
-        // 使用 :deep() 穿透作用域，修改 Element Plus 组件样式
+        width: 100%;
+
+        :deep(.el-input__wrapper) {
+            border-radius: 7px;
+            box-shadow: 0 0 0 1px #e5e7eb inset;
+            background: #f9fafb;
+            padding: 0 2px 0 10px;
+            height: 28px;
+            transition: all 0.2s;
+
+            &:hover {
+                box-shadow: 0 0 0 1px #ffd199 inset;
+                background: #fffdf9;
+            }
+
+            &.is-focus {
+                box-shadow: 0 0 0 1.5px #ff8c00 inset;
+                background: #ffffff;
+            }
+        }
+
+        :deep(.el-input__inner) {
+            font-size: 12px;
+            color: #374151;
+            height: 28px;
+
+            &::placeholder {
+                font-size: 12px;
+                color: #9ca3af;
+            }
+        }
+
         :deep(.el-input-group__append) {
-            padding: 0px !important;
+            padding: 0 !important;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
-        
-        // 修改 placeholder 字体大小
-        :deep(.el-input__inner::placeholder) {
-            font-size: 12px; // 根据需要调整大小
-        }
-        
-        
+
         .search-icon {
             cursor: pointer;
-            width: 14px;
-            height: 14px;
-            padding: 4px;
+            width: 13px;
+            height: 13px;
+            padding: 5px;
             vertical-align: middle;
+            opacity: 0.45;
+            transition: opacity 0.2s;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }

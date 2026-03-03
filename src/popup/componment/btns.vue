@@ -14,11 +14,12 @@ import SearchBtn from './SearchBtn.vue'
 <style scoped lang="scss">
 .btns-container {
     display: flex;
-    height: 30px;
-    gap: 20px;
-    // padding: 0px 20px 10px 20px;
-    margin: 0px 20px 10px 20px;
+    height: 32px;
+    gap: 10px;
+    margin: 0 16px;
+    padding-bottom: 12px;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #f0f1f5;
 }
 </style>

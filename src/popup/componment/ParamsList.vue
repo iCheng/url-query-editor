@@ -206,129 +206,211 @@ watch(refreshTrigger, () => {
 </script>
 
 <style scoped lang="scss">
-    .loading,
-    .error {
-        padding: 12px;
-        text-align: center;
-        color: #666;
+    .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 40px 12px;
+        color: #9ca3af;
+        font-size: 13px;
+
+        &::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            border: 2px solid #ffd199;
+            border-top-color: #ff8c00;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            flex-shrink: 0;
+        }
     }
 
     .error {
-        color: #d32f2f;
-        /* background-color: #ffebee; */
-        border-radius: 4px;
+        margin: 8px 16px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        color: #dc2626;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        text-align: center;
     }
 
     .content {
         display: flex;
         flex-direction: column;
-        gap: 16px;
     }
-
 
     .params-section {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
     }
 
     .params-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 20px 0px;
-        margin-top: 4px;
-        
+        padding: 10px 16px 6px;
+
         .params-title {
-            font-size: 13px;
-            font-weight: 500;
-            color: Orange;
+            font-size: 11px;
+            font-weight: 600;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
         }
-    
+
         .params-count {
-            font-size: 12px;
-            color: Orange;
-            opacity: 0.6;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ff8c00;
+            background: #fff3e0;
+            padding: 2px 9px;
+            border-radius: 10px;
+            line-height: 1.6;
         }
     }
 
-
     .empty-state {
-        padding: 24px;
+        padding: 40px 24px;
         text-align: center;
-        color: #999;
+        color: #9ca3af;
         font-size: 13px;
     }
 
     .params-list {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        max-height: 300px;
+        gap: 4px;
+        max-height: 320px;
         overflow-y: auto;
+        padding: 2px 8px 4px;
+
+        &::-webkit-scrollbar {
+            width: 3px;
+        }
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #ffd199;
+            border-radius: 2px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: #ff8c00;
+        }
     }
 
     .param-item {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin: 4px 0px;
-        border-radius: 4px;
-        margin: 0px 20px;
-    }
-
-    .param-key {
-        // font-weight: 800;
-        // color: Orange;
-        word-break: break-all;
-    }
-
-    .equal-sign {
-        color: Orange;
-    }
-
-    .param-input {
-        padding: 6px 8px;
-        border: 1px solid #ddd;
+        gap: 6px;
+        padding: 5px 8px;
         border-radius: 8px;
-        font-size: 13px;
-        color: #333;
-        background-color: #fff;
-        transition: border-color 0.2s;
-        &.key {
-            width: 110px;
+        background: #ffffff;
+        border: 1px solid #eef0f5;
+        transition: all 0.18s ease;
+
+        &:hover {
+            border-color: #ffd199;
+            background: #fffaf5;
+            box-shadow: 0 2px 8px rgba(255, 140, 0, 0.08);
+
+            .param-item-actions {
+                opacity: 1;
+                pointer-events: auto;
+            }
         }
     }
 
-    .param-input:focus {
-        outline: none;
-        border-color: Orange;
+    .equal-sign {
+        color: #ffaa40;
+        font-size: 13px;
+        flex-shrink: 0;
+        user-select: none;
     }
 
-    .param-input::placeholder {
-        color: #999;
+    .param-input {
+        padding: 4px 8px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        font-size: 12px;
+        color: #1f2937;
+        background-color: transparent;
+        transition: all 0.15s;
+        min-width: 0;
+
+        &:hover {
+            background-color: #f3f4f6;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: #fff;
+            border-color: #ff8c00;
+            box-shadow: 0 0 0 2.5px rgba(255, 140, 0, 0.12);
+        }
+
+        &::placeholder {
+            color: #c4c9d4;
+            font-size: 11px;
+        }
+
+        &.key {
+            flex: 0 0 110px;
+            min-width: 110px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        &:not(.key) {
+            flex: 1;
+        }
     }
 
     .param-item-actions {
         display: flex;
         align-items: center;
+        gap: 2px;
+        flex-shrink: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s;
+
         .copy-icon,
         .delete-icon {
-            width: 20px;
+            width: 14px;
+            height: 14px;
+            padding: 5px;
+            border-radius: 6px;
             cursor: pointer;
+            box-sizing: content-box;
+            transition: background 0.15s;
+
             &:hover {
-                opacity: 0.8;
+                background: rgba(0, 0, 0, 0.06);
             }
+        }
+
+        .delete-icon:hover {
+            background: rgba(220, 38, 38, 0.08);
         }
     }
 
     .highlight-flash {
-    animation: flash-highlight 1s ease-in-out 3;
+        animation: flash-highlight 1s ease-in-out 3;
     }
 
     @keyframes flash-highlight {
-    0%   { background-color: rgba(255, 215, 0, 0); }
-    50%  { background-color: rgba(255, 215, 0, 0.8); }
-    100% { background-color: rgba(255, 215, 0, 0); }
+        0%   { background-color: #fffaf5; border-color: #eef0f5; }
+        50%  { background-color: #fff3e0; border-color: #ffd199; box-shadow: 0 2px 8px rgba(255, 140, 0, 0.15); }
+        100% { background-color: #fffaf5; border-color: #eef0f5; }
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
     }
 </style>
