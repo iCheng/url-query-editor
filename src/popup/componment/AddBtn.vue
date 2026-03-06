@@ -15,7 +15,7 @@
                 <el-button class="confirm-btn" size="small" @click="onClick">Confirm</el-button>
             </div>
             <template #reference>
-                <el-button color="Orange" size="small" >Add</el-button>
+                <el-button color="Orange" size="small" >Add 参数</el-button>
             </template>
         </el-popover>
     </div>

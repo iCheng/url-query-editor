@@ -1,0 +1,1 @@
+export const ENV_STORAGE_KEY = 'env-list' // 环境缓存key
