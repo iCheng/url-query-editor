@@ -21,6 +21,7 @@ const onClick = () => {
     if (!paramsListDom) return;
     const targetDom = paramsListDom.querySelector(`[id^="${iputKey.value}"]`)
     if (targetDom) {
+        placeholder.value = ''
         iputKey.value = ''
         targetDom.scrollIntoView({
             behavior: 'smooth',
