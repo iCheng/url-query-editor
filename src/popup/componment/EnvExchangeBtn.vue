@@ -263,6 +263,15 @@ onMounted(async () => {
   border: 1px solid #f0f1f5 !important;
   overflow: hidden;
 
+  // 空状态  
+  .el-scrollbar__view {
+    &.el-cascader-menu__list {
+      &.is-empty {
+        min-height: 30px;
+      }
+    }
+  }
+
   .el-cascader-menu {
     min-width: 160px;
     height: auto !important;
